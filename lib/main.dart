@@ -657,7 +657,7 @@ class _HomePageState extends State<HomePage>
             icon: Icons.code,
             title: 'GitHub Repository',
             subtitle: 'Source code and documentation',
-            url: 'https://github.com/BargavanR/Drug_Analyser',
+            url: 'https://github.com/BargavanR/Drug_Analyser-GDG-2025',
           ),
         ],
       ),
