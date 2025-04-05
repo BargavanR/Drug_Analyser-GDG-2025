@@ -1,0 +1,187 @@
+  Widget buildPredictTab() {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Title
+          Text(
+            'Drug Analyser Engine',
+            style: GoogleFonts.orbitron(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: const Color(0xFF64FFDA),
+            ),
+          ),
+          const SizedBox(height: 8),
+
+          // Subtitle
+          Text(
+            'Enter chemical details to predict properties and interactions',
+            style: GoogleFonts.roboto(
+              fontSize: 16,
+              color: Colors.white70,
+            ),
+          ),
+          const SizedBox(height: 32),
+
+          // Chemical Input Card
+          Card(
+            color: const Color(0xFF112240),
+            elevation: 12,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // SMILES Input
+                  TextField(
+                    controller: smilesController,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
+                      labelText: 'SMILES Notation',
+                      labelStyle: TextStyle(color: Colors.white70),
+                      prefixIcon: Icon(Icons.code, color: Color(0xFF64FFDA)),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF64FFDA)),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+
+                  // Chemical Name Input
+                  TextField(
+                    controller: nameController,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
+                      labelText: 'Chemical Name',
+                      labelStyle: TextStyle(color: Colors.white70),
+                      prefixIcon:
+                          Icon(Icons.emoji_objects, color: Color(0xFF64FFDA)),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF64FFDA)),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+
+                  // Predict Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: isPredicting ? null : predict,
+                      icon: const Icon(Icons.science),
+                      label: isPredicting
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : const Text(
+                              "Predict Properties",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF64FFDA),
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 32),
+
+// 💡 Fun Chemistry Fact 1
+          Card(
+            color: const Color(0xFF0F172A),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            elevation: 6,
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.lightbulb,
+                      color: Color(0xFF64FFDA), size: 30),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Text(
+                      "💡 Did you know? Mixing hydrogen peroxide with potassium iodide triggers a spectacular reaction known as the 'Elephant's Toothpaste' – releasing rapid foamy oxygen!",
+                      style: GoogleFonts.robotoMono(
+                          fontSize: 14, color: Colors.white70),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+// 💡 Fact 3: Lipinski's Rule
+          Card(
+            color: const Color(0xFF0F172A),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            elevation: 6,
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.rule, color: Color(0xFF64FFDA), size: 30),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Text(
+                      "📏 Did You know ? Lipinski’s Rule of Five is a rule of thumb to evaluate drug-likeness. It predicts good oral bioavailability if the compound has ≤5 H-bond donors, ≤10 H-bond acceptors, MW < 500, and logP < 5.",
+                      style: GoogleFonts.robotoMono(
+                          fontSize: 14, color: Colors.white70),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+// 💡 Fact 4: Molecular Docking
+          Card(
+            color: const Color(0xFF0F172A),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            elevation: 6,
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.biotech, color: Color(0xFF64FFDA), size: 30),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Text(
+                      "⚙️Did You know? Molecular docking predicts how two molecules, such as a drug and protein, might bind together. It’s a vital tool in computational drug design for estimating binding affinity and stability.",
+                      style: GoogleFonts.robotoMono(
+                          fontSize: 14, color: Colors.white70),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }

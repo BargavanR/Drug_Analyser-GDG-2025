@@ -1,0 +1,251 @@
+
+  Widget buildTeamTab() {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Our Details',
+            style: GoogleFonts.orbitron(
+              fontSize: 32,
+              fontWeight: FontWeight.w700,
+              color: const Color(0xFF64FFDA),
+            ),
+          ),
+          const SizedBox(height: 16),
+          const Divider(color: Color(0xFF64FFDA), thickness: 1),
+          const SizedBox(height: 24),
+          _buildProjectLinks(),
+          const SizedBox(height: 40),
+          Text(
+            'Team Members',
+            style: GoogleFonts.orbitron(
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 24),
+          GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            crossAxisSpacing: 24,
+            mainAxisSpacing: 24,
+            childAspectRatio: 1.0,
+            children: [
+              _buildTeamMember(
+                  name: 'Ajay Krishna',
+                  role: 'ML Engineer',
+                  github: 'https://github.com/ajaykrishna00-7',
+                  linkedin:
+                      'https://www.linkedin.com/in/ajay-krishna-588a1228b/',
+                  imagePath: 'assets/Profile/ajay.jpg'),
+              _buildTeamMember(
+                  name: 'Dashrad Raghav',
+                  role: 'ML Engineer',
+                  github: 'https://github.com/cheetahraghav',
+                  linkedin: 'https://www.linkedin.com/in/dhasradraghavab/',
+                  imagePath: 'assets/Profile/raghav.jpg'),
+              _buildTeamMember(
+                  name: 'Bargavan',
+                  role: 'Frontend/Backend Engineer',
+                  github: 'https://github.com/BargavanR',
+                  linkedin: 'https://www.linkedin.com/in/bargavan/',
+                  imagePath: 'assets/Profile/bargavan.jpg'),
+              _buildTeamMember(
+                  name: 'Arun',
+                  role: 'Frontend Engineer',
+                  github: '',
+                  linkedin: 'https://www.linkedin.com/in/arun-r-012b39277/',
+                  imagePath: 'assets/Profile/arun.jpeg'),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProjectLinks() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: const Color(0xFF172A45),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Project Resources',
+            style: GoogleFonts.roboto(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 16),
+          _buildResourceLink(
+            icon: Icons.description,
+            title: 'Project Presentation',
+            subtitle: 'DrugAnalyser Pro concept and implementation details',
+            url:
+                'https://annauniv0-my.sharepoint.com/:f:/g/personal/2023511001_student_annauniv_edu/Eq0ay1FuL0tHnzhhBv8AFn4Bfy8YuhTn4Qz00QS8kEKFyA?e=K4LHeO',
+          ),
+          const Divider(color: Colors.white24, height: 24),
+          _buildResourceLink(
+            icon: Icons.code,
+            title: 'GitHub Repository',
+            subtitle: 'Source code and documentation',
+            url: 'https://github.com/BargavanR/Drug_Analyser',
+          ),
+        ],
+      ),
+    );
+  }
+
+  void openUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Widget _buildResourceLink({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required String url,
+  }) {
+    return InkWell(
+      onTap: () => launchUrl(Uri.parse(url)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: const Color(0xFF0A192F),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: const Color(0xFF64FFDA), size: 24),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.roboto(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: GoogleFonts.roboto(
+                      fontSize: 15,
+                      color: Colors.white70,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(Icons.open_in_new, color: const Color(0xFF64FFDA), size: 20),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTeamMember({
+    required String name,
+    required String role,
+    required String github,
+    required String linkedin,
+    required String imagePath, // <-- New parameter
+  }) {
+    return Card(
+      elevation: 10,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      color: const Color(0xFF0A192F),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 400,
+              height: 400,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: const Color(0xFF64FFDA),
+                  width: 2,
+                ),
+                color: const Color(0xFF172A45),
+              ),
+              child: ClipOval(
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              name,
+              style: GoogleFonts.roboto(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              role,
+              style: GoogleFonts.roboto(
+                fontSize: 14,
+                color: const Color(0xFF64FFDA),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.link),
+                  color: Colors.white,
+                  onPressed: () => openUrl(linkedin),
+                  tooltip: 'LinkedIn Profile',
+                ),
+                IconButton(
+                  icon: const Icon(Icons.code),
+                  color: Colors.white,
+                  onPressed: () => openUrl(github),
+                  tooltip: 'GitHub Profile',
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
