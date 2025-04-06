@@ -5,8 +5,8 @@ import joblib
 import json
 
 # Load pre-trained model and scaler
-final_model = joblib.load(r"chemix88\assets\ML_models\drug_toxicity_model.pkl")
-scaler = joblib.load(r"chemix88\assets\ML_models\scaler.pkl")
+final_model = joblib.load(r"chemix88\drug_backend\models\drug_toxicity_model.pkl")
+scaler = joblib.load(r"chemix88\drug_backend\models\scaler.pkl")
 
 app = Flask(__name__)
 
