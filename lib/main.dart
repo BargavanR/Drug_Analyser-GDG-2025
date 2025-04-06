@@ -160,6 +160,7 @@ class _HomePageState extends State<HomePage>
   String buildGeminiPrompt(Map<String, dynamic> pythonResult) {
     return """
     Analyze the following drug candidate:
+    and give output in Four Lines without too technical ,all we need to know is if it is toxic are not
     Name: ${pythonResult['Name']}
     SMILES: ${pythonResult['SMILES']}
     Predicted Properties:
@@ -173,7 +174,7 @@ class _HomePageState extends State<HomePage>
       - Fraction CSP3: ${pythonResult['Predicted Properties']['FractionCSP3']}
     Toxicity Prediction: ${pythonResult['Toxicity Prediction']}
     Toxicity Confidence: ${pythonResult['Toxicity Confidence']}
-    Provide a summary of the drug's safety and potential use.
+    Provide a summary of the drug's safety and potential use , Please Dont add Further testing is needed.
     """;
   }
 
@@ -403,6 +404,34 @@ class _HomePageState extends State<HomePage>
 
           const SizedBox(height: 32),
 
+// 💡Example card
+          Card(
+            color: const Color(0xFF0F172A),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            elevation: 6,
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.lightbulb,
+                      color: Color(0xFF64FFDA), size: 30),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Text(
+                      "EXAMPLE INPUTS: SMILES Notation : C1=CC=C2C(=C1)C(=O)N(C2=O)C3=CC=CC=C3 , CHEMICAL NAME :CHEMBL1234567",
+                      style: GoogleFonts.robotoMono(
+                          fontSize: 10, color: Colors.white70),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 32),
+
 // 💡 Fun Chemistry Fact 1
           Card(
             color: const Color(0xFF0F172A),
@@ -490,6 +519,24 @@ class _HomePageState extends State<HomePage>
     );
   }
 
+  String formatPredictionResults(Map<String, dynamic> results) {
+    final buffer = StringBuffer();
+
+    buffer.writeln('Name: ${results['Name']}');
+
+    final props = results['Predicted Properties'] as Map<String, dynamic>;
+    buffer.writeln('--- Predicted Properties ---');
+    props.forEach((key, value) {
+      buffer.writeln('$key: $value');
+    });
+
+    buffer.writeln('SMILES: ${results['SMILES']}');
+    buffer.writeln('Toxicity Confidence: ${results['Toxicity Confidence']}');
+    buffer.writeln('Toxicity Prediction: ${results['Toxicity Prediction']}');
+
+    return buffer.toString();
+  }
+
   Widget buildResultsTab() {
     if (!showResult) {
       return Center(
@@ -529,14 +576,14 @@ class _HomePageState extends State<HomePage>
           ),
           const SizedBox(height: 16),
           Text(
-            predictionResults.toString(),
-            style: GoogleFonts.robotoMono(fontSize: 14, color: Colors.white70),
+            formatPredictionResults(predictionResults),
+            style: GoogleFonts.robotoMono(fontSize: 20, color: Colors.white70),
           ),
           const SizedBox(height: 32),
           Text(
             'Gemini Summary',
             style: GoogleFonts.orbitron(
-              fontSize: 28,
+              fontSize: 30,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF64FFDA),
             ),
@@ -544,7 +591,7 @@ class _HomePageState extends State<HomePage>
           const SizedBox(height: 16),
           Text(
             geminiSummary,
-            style: GoogleFonts.robotoMono(fontSize: 14, color: Colors.white70),
+            style: GoogleFonts.robotoMono(fontSize: 20, color: Colors.white70),
           ),
         ],
       ),
