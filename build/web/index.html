@@ -29,10 +29,33 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>chemix88</title>
+  <title>Drug Analyser</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBc5oKe-eubmLK_46ZThOgavxda6gyxhBs",
+      authDomain: "drug-analyser.firebaseapp.com",
+      projectId: "drug-analyser",
+      storageBucket: "drug-analyser.firebasestorage.app",
+      messagingSenderId: "729066061846",
+      appId: "1:729066061846:web:c5721315af01b81f637537",
+      measurementId: "G-CB2H49K4NN"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </body>
 </html>

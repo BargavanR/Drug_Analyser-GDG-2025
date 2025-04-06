@@ -38150,7 +38150,7 @@ if(q.d<280)return r}q.d=u.t.charCodeAt((q.d&-4)+18)
 return s}}
 A.G_.prototype={
 N(a){var s=null,r=A.aKD().$0().agk(B.hA,B.hA,B.Ov),q=A.e1(16),p=A.aJ(B.d.aB(127.5),B.cp.G()>>>16&255,B.cp.G()>>>8&255,B.cp.G()&255)
-return new A.xQ(B.Ds,"ChemPredict Pro",A.p3(s,new A.vz(B.cp,8,new A.bS(q,B.q),B.ME,s),new A.ne(B.a0,B.cU,B.k,s,s,s,s,s,s,B.a8,B.l,s,s,s,s,s,s,s,s,s,s,s,s,s,s,B.B1,B.k,s,s,B.cp,B.l,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,B.k,B.l),A.aCf(new A.hX(4,A.e1(12),B.q),B.CX,p,!0),B.cU,B.cU,r,s),!1,s)}}
+return new A.xQ(B.Ds,"Drug Analyser Pro",A.p3(s,new A.vz(B.cp,8,new A.bS(q,B.q),B.ME,s),new A.ne(B.a0,B.cU,B.k,s,s,s,s,s,s,B.a8,B.l,s,s,s,s,s,s,s,s,s,s,s,s,s,s,B.B1,B.k,s,s,B.cp,B.l,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,B.k,B.l),A.aCf(new A.hX(4,A.e1(12),B.q),B.CX,p,!0),B.cU,B.cU,r,s),!1,s)}}
 A.x8.prototype={
 an(){var s=$.al()
 return new A.BT(new A.Ai(B.ka,s),new A.Ai(B.ka,s),A.x(t.N,t.z),null,null)}}

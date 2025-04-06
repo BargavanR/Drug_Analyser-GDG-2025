@@ -1,0 +1,43 @@
+ return MaterialApp(
+      title: 'Drug Analyser',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: const Color(0xFF0A192F), // Navy blue
+        colorScheme: ColorScheme.light(
+          primary: const Color(0xFF0A192F),
+          secondary: const Color(0xFF64FFDA), // Teal
+          surface: const Color(0xFF172A45),
+        ),
+        scaffoldBackgroundColor: const Color(0xFF0A192F),
+        textTheme: GoogleFonts.robotoTextTheme().copyWith(
+          displayLarge: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+          bodyLarge: const TextStyle(color: Colors.white70),
+          bodyMedium: const TextStyle(color: Colors.white70),
+        ),
+        cardTheme: CardTheme(
+          elevation: 8,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          color: const Color(0xFF172A45),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: const Color(0xFF172A45).withOpacity(0.5),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide.none,
+          ),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 18,
+          ),
+        ),
+      ),
+      home: const HomePage(),
+    );
+  }
+}
