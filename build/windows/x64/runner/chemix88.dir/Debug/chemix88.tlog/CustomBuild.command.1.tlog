@@ -1,0 +1,10 @@
+^E:\BARGAVAN\PROJECTS\GDG\CHEMIX88_V3\CHEMIX88\WINDOWS\RUNNER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SE:/Bargavan/Projects/GDG/chemix88_v3/chemix88/windows -BE:/Bargavan/Projects/GDG/chemix88_v3/chemix88/build/windows/x64 --check-stamp-file E:/Bargavan/Projects/GDG/chemix88_v3/chemix88/build/windows/x64/runner/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
